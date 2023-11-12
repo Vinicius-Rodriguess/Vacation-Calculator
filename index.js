@@ -54,11 +54,39 @@ class Calcula {
     descontosBase(proventos){
         //Pegar tabela de bases do inss e de ir para os descontos
 
-        const descontos = 100;
+        const descontos = descontoInss(this.salario) + descontoIr(this.salario);
         const liquido = proventos - descontos
 
         this.exibir(proventos, descontos, liquido);
     }
+
+    descontoInss(salario){
+
+        let descontarInss = 0;
+
+        if(salario > 0 || salario < 1320) descontarInss = 7.5% ;
+        if(salario > 1320.01 || salario < 2571.29) descontarInss = 9.0% ; 
+        if(salario > 2571.30 || salario < 3856.94) descontarInss = 12.0% ;
+        if(salario > 3856.95 || salario < 7507.49) descontarInss = 14.0% ;
+
+        return salario - descontarInss; 
+
+    }
+    
+    descontoIr(salario){
+
+        let descontarIr = 0;
+
+        // salario ate 1903,98 - isento
+        if(salario > 1903.99 || salario < 2826.65) descontarIr = 7.5% ;
+        if(salario > 2826.66 || salario < 3751.05) descontarIr = 15% ; 
+        if(salario > 3751.06 || salario < 4664.68) descontarIr = 22.5% ;
+        if(salario > 4664.68) descontarIr = 27.5% ;
+
+        return salario - descontarIr; 
+
+    }
+
 
     exibir(proventos, descontos, liquido){
         resultado.innerHTML = `Proventos: ${proventos.toFixed(2)} - Descontos: ${descontos.toFixed(2)} - Liquido: ${liquido.toFixed(2)}`;
