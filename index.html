@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calcular Férias</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <section class="container">
+    <div class="title">
+      <h1>Calcular Férias</h1>
+    </div>
+    
+    <form action="/" method="POST" class="formulario">
+      <div class="input-group">
+        <div class="input-block">
+          <label for="salario">Salário</label>
+          <input type="number" id="salario" class="salario" required>
+        </div>
+
+        <div class="input-block">
+          <label for="medias">Médias</label>
+          <input type="number" id="medias" class="medias">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-block">
+          <label for="dias">Dias</label>
+          <input type="number" id="dias" class="dias" required>
+        </div>
+
+        <div class="input-block">
+          <label for="abono" class="label-abono">Abono</label>
+          <input type="checkbox" id="abono" class="abono">
+        </div>
+      </div>
+
+      <button type="submit" class="btnSubmit">Calcular</button>
+    </form>
+  </section>
+  
+  <section class="resultado"></section>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
