@@ -3,18 +3,6 @@ const formulario = document.querySelector(".formulario");
 const buttonSubmit = document.querySelector(".btnSubmit");
 const resultado = document.querySelector(".resultado");
 
-buttonSubmit.addEventListener("click", e => {
-    e.preventDefault();
-
-    const salario = parseFloat(document.querySelector(".salario").value);
-    const medias = parseFloat(document.querySelector(".medias").value) || 0;
-    const dias = parseInt(document.querySelector(".dias").value);
-    const abono = document.querySelector(".abono").checked;
-
-    new Calcula(salario, dias, medias, abono);
-
-});
-
 class Calcula {
     constructor(salario, dias, medias, abono) {
 
@@ -54,37 +42,33 @@ class Calcula {
     descontosBase(proventos){
         //Pegar tabela de bases do inss e de ir para os descontos
 
-        const descontos = descontoInss(this.salario) + descontoIr(this.salario);
-        const liquido = proventos - descontos
+        const descontos = this.descontoInss(this.salario) + this.descontoIr(this.salario);
+        const liquido = proventos - descontos;
 
         this.exibir(proventos, descontos, liquido);
     }
 
-    descontoInss(salario){
-
+    descontoInss(salario) {
         let descontarInss = 0;
 
-        if(salario > 0 || salario < 1320) descontarInss = 7.5% ;
-        if(salario > 1320.01 || salario < 2571.29) descontarInss = 9.0% ; 
-        if(salario > 2571.30 || salario < 3856.94) descontarInss = 12.0% ;
-        if(salario > 3856.95 || salario < 7507.49) descontarInss = 14.0% ;
+        if (salario > 0 && salario < 1320) descontarInss = 0.075; // 7.5%
+        else if (salario >= 1320.01 && salario < 2571.29) descontarInss = 0.09; // 9.0%
+        else if (salario >= 2571.30 && salario < 3856.94) descontarInss = 0.12; // 12.0%
+        else if (salario >= 3856.95 && salario < 7507.49) descontarInss = 0.14; // 14.0%
 
-        return salario - descontarInss; 
-
+        return salario * descontarInss;
     }
-    
-    descontoIr(salario){
 
+    descontoIr(salario) {
         let descontarIr = 0;
 
         // salario ate 1903,98 - isento
-        if(salario > 1903.99 || salario < 2826.65) descontarIr = 7.5% ;
-        if(salario > 2826.66 || salario < 3751.05) descontarIr = 15% ; 
-        if(salario > 3751.06 || salario < 4664.68) descontarIr = 22.5% ;
-        if(salario > 4664.68) descontarIr = 27.5% ;
+        if (salario >= 1903.99 && salario < 2826.65) descontarIr = 0.075; // 7.5%
+        else if (salario >= 2826.66 && salario < 3751.05) descontarIr = 0.15; // 15.0%
+        else if (salario >= 3751.06 && salario < 4664.68) descontarIr = 0.225; // 22.5%
+        else if (salario >= 4664.68) descontarIr = 0.275; // 27.5%
 
-        return salario - descontarIr; 
-
+        return salario * descontarIr;
     }
 
 
@@ -94,3 +78,15 @@ class Calcula {
 
 
 }
+
+buttonSubmit.addEventListener("click", e => {
+    e.preventDefault();
+
+    const salario = parseFloat(document.querySelector(".salario").value);
+    const medias = parseFloat(document.querySelector(".medias").value) || 0;
+    const dias = parseInt(document.querySelector(".dias").value);
+    const abono = document.querySelector(".abono").checked;
+
+    new Calcula(salario, dias, medias, abono);
+
+});
