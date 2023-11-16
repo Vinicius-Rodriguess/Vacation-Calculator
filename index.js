@@ -20,7 +20,7 @@ class Calcula {
 
     feriasSemAbono() {
         //regra de 3 para descobrir o proporcial caso nao seja 30 dias de descanso
-        const salarioProporcial = (this.salario * this.dias) / 30;
+        const salarioProporcial = (this.salario / 30) * this.dias;
         const tercoProporcial = (salarioProporcial + this.medias) / 3;
 
         const proventos = salarioProporcial + tercoProporcial;
@@ -29,14 +29,16 @@ class Calcula {
     }
 
     feriasComAbono() {
-        // isso só ta copiado de cima 
         //regra de 3 para descobrir o proporcial caso nao seja 30 dias de descanso
-        const salarioProporcial = (this.salario * this.dias) / 30;
+        const salarioProporcial = (this.salario / 30) * this.dias;
         const tercoProporcial = (salarioProporcial + this.medias) / 3;
-        const abono = 1;
 
-        const proventos = salarioProporcial + tercoProporcial + abono;
+        const abono = (salarioProporcial / 30) * 10;
+        const tercoAbono = abono / 3;
 
+        const proventos = salarioProporcial + tercoProporcial + abono + tercoAbono;
+
+        this.descontosBase(proventos);
     }
 
     descontosBase(proventos){
