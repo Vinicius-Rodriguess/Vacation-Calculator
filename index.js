@@ -53,12 +53,26 @@ class Calcula {
     descontoInss(salario) {
         let descontarInss = 0;
 
-        if (salario > 0 && salario < 1320) descontarInss = 0.075; // 7.5%
-        else if (salario >= 1320.01 && salario < 2571.29) descontarInss = 0.09; // 9.0%
-        else if (salario >= 2571.30 && salario < 3856.94) descontarInss = 0.12; // 12.0%
-        else if (salario >= 3856.95 && salario < 7507.49) descontarInss = 0.14; // 14.0%
+        if (salario > 0 && salario < 1320) {
+            descontarInss = 0.075; // 7.5%
+            // Limitar o desconto a 99
+            return Math.min(salario * descontarInss, 99);
+        } else if (salario >= 1320.01 && salario < 2571.29) {
+            descontarInss = 0.09; // 9.0%
+            // Limitar o desconto a 112.62
+            return Math.min(salario * descontarInss, 112.62);
+        } else if (salario >= 2571.30 && salario < 3856.94) {
+            descontarInss = 0.12; // 12.0%
+            // Limitar o desconto a 154.28
+            return Math.min(salario * descontarInss, 154.28);
+        } else if (salario >= 3856.95 && salario < 7507.49) {
+            descontarInss = 0.14; // 14.0%
+            // Limitar o desconto a 511.05
+            return Math.min(salario * descontarInss, 511.05);
+        }
+    
+        return 0; 
 
-        return salario * descontarInss;
     }
 
     descontoIr(salario) {
