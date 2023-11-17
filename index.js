@@ -1,7 +1,7 @@
 
 const formulario = document.querySelector(".formulario");
 const buttonSubmit = document.querySelector(".btnSubmit");
-const resultado = document.querySelector(".resultado");
+const resultado = document.querySelector(".detalhadoCalculo");
 
 class Calcula {
     constructor(salario, dias, medias, abono) {
