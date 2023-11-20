@@ -5,96 +5,150 @@
 }
 
 body {
-  background-color: #f3f7f9;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .container {
-  display: block;
-  max-width: 400px;
-  margin: 50px auto;
+  display: flex;
+}
+
+.entry,
+.exit {
   background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+}
+
+.entry {
+  max-width: 400px;
+}
+
+.exit {
+  flex-grow: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+}
+
+.text {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.detalhado {
+  width: 100%;
+}
+
+.content-exit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
 }
 
 .title {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.formulario label,
-.formulario input,
-.formulario button,
-.formulario p {
-  display: block;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.formulario input {
-  font-size: 16px;
-  height: 40px;
+  background-color: #3498db;
+  color: #fff;
   padding: 10px;
-  border: 1px solid #ddd;
+  margin-bottom: 20px;
   border-radius: 5px;
 }
 
-.formulario input:focus {
-  outline: none;
-  border-color: #5e9ae5;
+.form-group {
+  justify-content: space-between;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 20px;
+  display: flex;
 }
 
-.formulario label {
+#abono {
+  width: 350px;
+  margin: 5px;
+}
+
+#decimoTerceiro {
+  width: 25px;
+  margin: 5px;
+}
+
+.salario,
+.medias,
+.dias {
+  width: 80px;
+  text-align: center;
+}
+
+
+.label-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.btn-group {
+  text-align: center;
+}
+
+.btnSubmit {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   font-size: 16px;
-  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
-.formulario .label-abono {
+.btnSubmit:hover {
+  background-color: #2980b9;
+}
+
+.exit h2 {
+  font-size: 18px;
   margin-bottom: 10px;
 }
 
-.formulario button {
-  border: none;
-  background: #3498db;
-  color: #fff;
-  font-size: 18px;
+.exit ul {
+  list-style: none;
+  padding: 0;
+}
+
+.exit li {
+  margin-bottom: 10px;
+}
+
+.exit li span {
   font-weight: bold;
-  height: 50px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
+  margin-left: 10px;
 }
 
-.formulario button:hover {
-  background: #297fb8;
-}
 
-.resultado {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-}
 
-.resultadoCalculo{
-  display: block;
-  max-width: 400px;
-  margin: 50px auto;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-.detalhadoCalculo{
-  margin: 10px;
-  padding: 10px;
-}
 
-.detalhadoCalculo ul li {
-  padding: 5px;
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .entry,
+  .exit {
+    margin: 20px 0;
+    max-width: none;
+  }
 }
