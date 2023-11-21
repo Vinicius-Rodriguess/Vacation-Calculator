@@ -7,6 +7,7 @@ const umtercoResult = document.querySelector(".umtercoResult");
 const umTercoAbonoResult = document.querySelector(".umTercoAbonoResult");
 const inssResult = document.querySelector(".inssResult");
 const irResult = document.querySelector(".irResult");
+const mediasResult = document.querySelector(".mediasResult");
 
 class Calcula {
     constructor(salario, dias, medias, abono) {
@@ -18,6 +19,7 @@ class Calcula {
         this.tercoAbono = 0;
         this.descontoInss = 0;
         this.descontoIr = 0;
+        this.salarioProporcial = 0;
 
         this.abono === true ? this.feriasComAbono() : this.feriasSemAbono();
     }
@@ -25,6 +27,7 @@ class Calcula {
     feriasSemAbono() {
         const salarioProporcial = (this.salario / 30) * this.dias;
         this.tercoProporcial = (salarioProporcial + this.medias) / 3;
+        this.salarioProporcial = salarioProporcial;
 
         const proventos = salarioProporcial + this.tercoProporcial;
 
@@ -34,6 +37,7 @@ class Calcula {
     feriasComAbono() {
         const salarioProporcial = (this.salario / 30) * this.dias;
         this.tercoProporcial = (salarioProporcial + this.medias) / 3;
+        this.salarioProporcial = salarioProporcial;
 
         const abono = (salarioProporcial / 30) * 10;
         this.tercoAbono = abono / 3;
@@ -47,11 +51,11 @@ class Calcula {
         this.descontoInss = this.calcularDescontoInss(proventos);
         this.descontoIr = this.calcularDescontoIr(proventos);
 
-        const descotosTotais = this.descontoInss + this.descontoIr;
+        const descontosTotais = this.descontoInss + this.descontoIr;
 
-        const liquido = proventos - descotosTotais;
+        const liquido = proventos - descontosTotais;
 
-        this.exibir(proventos, descotosTotais, liquido);
+        this.exibir(proventos, descontosTotais, liquido);
     }
 
     calcularDescontoInss(salario) {
@@ -70,7 +74,7 @@ class Calcula {
             descontarInss = 0.14; // 14.0%
             return Math.min(salario * descontarInss, 511.05);
         } else if (salario > 7507.29){
-            descontarInss = 876.94
+            descontarInss = 876.94;
             return descontarInss;
         }
 
@@ -99,12 +103,13 @@ class Calcula {
 
     exibir(proventos, descontos, liquido) {
         resultado.innerHTML = `Proventos: ${proventos.toFixed(2)} - Descontos: ${descontos.toFixed(2)} - Liquido: ${liquido.toFixed(2)}`;
-        salarioResult.innerHTML = this.salario;
+        salarioResult.innerHTML = this.salarioProporcial.toFixed(2);
         abonoResult.innerHTML = this.abono ? (this.tercoAbono * 3).toFixed(2) : '0.00'; // Exibe o valor do abono se for verdadeiro, senão exibe 0.00
         umtercoResult.innerHTML = this.tercoProporcial.toFixed(2);
         umTercoAbonoResult.innerHTML = this.tercoAbono.toFixed(2);
         inssResult.innerHTML = this.descontoInss.toFixed(2);
         irResult.innerHTML = this.descontoIr.toFixed(2);
+        mediasResult.innerHTML = this.medias.toFixed(2);
     }
 }
 
@@ -116,8 +121,9 @@ buttonSubmit.addEventListener("click", e => {
     const dias = parseInt(document.querySelector(".dias").value);
     const abono = document.querySelector(".abono").checked;
 
-    new Calcula(salario, dias, medias, abono);
+    if (!isNaN(salario)) {
+        new Calcula(salario, dias, medias, abono);
+    } else {
+        console.error("Erro ao analisar o salário.");
+    }
 });
-
-
-//ta somando tudo errado, e falta exibir medias 
