@@ -11,7 +11,6 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin: 0;
 }
 
 .container {
@@ -24,15 +23,8 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px;
+  width: 500px;
   padding: 20px;
-}
-
-.entry {
-  max-width: 400px;
-}
-
-.exit {
-  flex-grow: 1;
 }
 
 .content {
@@ -56,7 +48,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 350px;
 }
 
 .title {
@@ -136,8 +127,38 @@ body {
   margin-left: 10px;
 }
 
+.salarioResult,
+.umtercoResult,
+.abonoResult,
+.umTercoAbonoResult,
+.mediasResult {
+  color: rgb(5, 227, 5);
+}
 
 
+
+.inssResult,
+.irResult {
+  color: red;
+}
+
+.resultadoCalculoExibir{
+  display: flex;
+}
+
+
+.descricao,
+.numeros {
+  display: block;
+  margin: 10px;
+  
+}
+
+
+.separa{
+  display: flex;
+  justify-content: space-between;
+}
 
 
 
