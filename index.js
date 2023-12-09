@@ -12,15 +12,18 @@ const descontosResult = document.querySelector(".descontosResult");
 const liquidoResult = document.querySelector(".liquidoResult");
 
 class Calcula {
-    constructor(salario, dias, medias, abono) {
+    constructor(salario, dias, medias, abono, decimo) {
         this.salario = salario;
         this.dias = dias;
         this.medias = medias;
         this.abono = abono;
+        this.decimo = decimo;
         this.tercoProporcial = 0;
         this.tercoAbono = 0;
         this.descontoInss = 0;
         this.descontoIr = 0;
+
+        console.log(this.decimo)
 
         this.abono === true ? this.feriasComAbono() : this.feriasSemAbono();
     }
@@ -30,6 +33,11 @@ class Calcula {
         this.tercoProporcial = (salarioProporcial + this.medias) / 3;
 
         const proventos = salarioProporcial + this.tercoProporcial;
+
+        if(this.decimo === true){
+            this.parcelaDecimoTerceiro(this.salario, proventos);
+            return; 
+        }
 
         this.descontosBase(proventos);
     }
@@ -43,7 +51,18 @@ class Calcula {
 
         const proventos = salarioProporcial + this.tercoProporcial + abono + this.tercoAbono;
 
+        if(this.decimo === true){
+            this.parcelaDecimoTerceiro(this.salario, proventos);
+            return; 
+        }
+
         this.descontosBase(proventos);
+    }
+
+    parcelaDecimoTerceiro(salario, proventos){
+        const decimo = salario / 2;
+
+        this.descontosBase(proventos + decimo);
     }
 
     descontosBase(proventos) {
@@ -121,8 +140,9 @@ buttonSubmit.addEventListener("click", e => {
     const medias = parseFloat(document.querySelector(".medias").value) || 0;
     const dias = parseInt(document.querySelector(".dias").value);
     const abono = document.querySelector(".abono").checked;
+    const decimo = document.querySelector(".decimoTerceiro").checked;
 
-    new Calcula(salario, dias, medias, abono);
+    new Calcula(salario, dias, medias, abono, decimo);
 });
 
 
