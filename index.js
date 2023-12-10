@@ -37,20 +37,16 @@ class Calcula {
 
     }
 
-    CalculaFerias(salarioBase, diasDeFerias) {
+    CalculaFerias(salarioBase, diasDeFerias, medias) {
         this.salarioProporcional = (salarioBase / 30) * diasDeFerias;
+
+        this.tercoSalarioProporcial = (this.salarioProporcional + medias) / 3;
     }
 
-    CalculaTercoProporcinal(salarioBase, medias){
-        this.tercoSalarioProporcial = (salarioBase + medias) / 3;
-    }
+    CalculaAbonoPecuario(salarioBase, medias) {
+        this.abonoPecuario = ((salarioBase + medias) / 30) * 10;
 
-    CalculaAbonoPecuario(salarioBase) {
-        this.abonoPecuario = (salarioBase / 30) * 10;
-    }
-
-    CalcularTercoAbonoPecuario(salarioBase){
-        this.tercoAbonoPecuario = ((salarioBase / 30) * 10) / 3;
+        this.tercoAbonoPecuario = this.abonoPecuario / 3;
     }
 
     CalculaParcelaDecimoTerceiro(salarioBase){
@@ -59,16 +55,17 @@ class Calcula {
 
     main(salarioBase, diasDeFerias, medias, abonoCheck, decimoCheck){
 
-        this.CalculaFerias(salarioBase, diasDeFerias);
-        this.CalculaTercoProporcinal(salarioBase, medias);
+        this.CalculaFerias(salarioBase, diasDeFerias, medias);
 
-        if(abonoCheck) this.CalculaAbonoPecuario(salarioBase);
-        if(abonoCheck) this.CalcularTercoAbonoPecuario(salarioBase);
+        if(abonoCheck) this.CalculaAbonoPecuario(salarioBase, medias);
+
         if(decimoCheck) this.CalculaParcelaDecimoTerceiro(salarioBase);
+        this.CalculaGerais();
+        
+        this.calcularDescontoInss(this.proventosTotais);
+        this.CalculaGerais();
 
-        this.calcularDescontoInss(salarioBase);
-        this.calcularDescontoIr(salarioBase);
-
+        this.calcularDescontoIr(this.proventosTotais - this.descontoInss);
         this.CalculaGerais();
 
         this.exibirNaTela(abonoCheck, decimoCheck);
@@ -109,46 +106,40 @@ class Calcula {
         liquidoResult.innerText = `Liquido: ${this.liquidoTotal.toFixed(2)}`;
     }
 
-    calcularDescontoInss(salarioBase) {
-        let inss = 0;
+    calcularDescontoInss(proventosTotais) {
 
-        if (salarioBase > 0 && salarioBase < 1320) {
-            inss = 0.075; // 7.5%
-            this.descontoInss = Math.min(salarioBase * inss, 99);
-        } else if (salarioBase >= 1320.01 && salarioBase < 2571.29) {
-            inss = 0.09; // 9.0%
-            this.descontoInss = Math.min(salarioBase * inss, 112.62);
-        } else if (salarioBase >= 2571.30 && salarioBase < 3856.94) {
-            inss = 0.12; // 12.0%
-            this.descontoInss = Math.min(salarioBase * inss, 154.28);
-        } else if (salarioBase >= 3856.95 && salarioBase < 7507.29) {
-            inss = 0.14; // 14.0%
-            this.descontoInss = Math.min(salarioBase * inss, 511.05);
-        } else if (salarioBase > 7507.29) {
-            inss = 876.94
-            this.descontoInss = inss;
-        } else {
-            this.descontoInss = 0;
-        }
+        if (proventosTotais >= 0 && proventosTotais <= 1320) {
+            this.descontoInss = (proventosTotais * 0.075) - 99;
+            
+        } else if (proventosTotais >= 1320.01 && proventosTotais <= 2571.29) {
+            this.descontoInss = (proventosTotais * 0.09) - 112.62;
+
+        } else if (proventosTotais >= 2571.30 && proventosTotais <= 3856.94) {
+            this.descontoInss = (proventosTotais * 0.12) - 154.28;
+
+        } else if (proventosTotais >= 3856.95 && proventosTotais <= 7507.29) {
+            this.descontoInss = (proventosTotais * 0.14) - 511.05;
+            
+        } else if (proventosTotais >= 7507.29) {
+            this.descontoInss = 876.94;
+        } 
 
     }
 
-    calcularDescontoIr(salarioBase) {
-        let ir = 0;
+    calcularDescontoIr(proventosMenosInss) {
 
-        if (salarioBase >= 1903.99 && salarioBase < 2826.65) {
-            ir = 0.075; // 7.5%
-            this.descontoIr = Math.min(salarioBase * ir, 158.40);
-        } else if (salarioBase >= 2826.66 && salarioBase < 3751.05) {
-            ir = 0.15; // 15%
-            this.descontoIr = Math.min(salarioBase * ir, 370.40);
-        } else if (salarioBase >= 3751.06 && salarioBase < 4664.68) {
-            ir = 0.225; // 22,50%
-            this.descontoIr = Math.min(salarioBase * ir, 651.73);
-        } else if (salarioBase >= 4664.69) {
-            ir = 0.275; // 27,50%
-            this.descontoIr = Math.min(salarioBase * ir, 884.96);
-            return;
+        if (proventosMenosInss >= 1903.99 && proventosMenosInss < 2826.65) {
+            this.descontoIr = (proventosMenosInss * 0.075) - 158.40;
+
+        } else if (proventosMenosInss >= 2826.66 && proventosMenosInss < 3751.05) {
+            this.descontoIr = (proventosMenosInss * 0.15) - 370.40;
+
+        } else if (proventosMenosInss >= 3751.06 && proventosMenosInss < 4664.68) {
+            this.descontoIr = (proventosMenosInss * 0.225) - 651.73;
+
+        } else if (proventosMenosInss >= 4664.69) {
+            this.descontoIr = (proventosMenosInss * 0.275) - 884.96;
+            
         } else {
             this.descontoIr = 0;
         }
