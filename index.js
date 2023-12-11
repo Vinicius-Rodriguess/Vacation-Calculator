@@ -9,6 +9,7 @@ const mediasResult = document.querySelector(".mediasResult");
 const proventosResult = document.querySelector(".proventosResult");
 const descontosResult = document.querySelector(".descontosResult");
 const liquidoResult = document.querySelector(".liquidoResult");
+const parcelaDecimoResult = document.querySelector(".parcelaDecimoResult");
 
 class Calcula {
     constructor(salarioBase, diasDeFerias, medias, abonoCheck, decimoCheck) {
@@ -62,7 +63,7 @@ class Calcula {
         if(decimoCheck) this.CalculaParcelaDecimoTerceiro(salarioBase);
         this.CalculaGerais();
         
-        this.calcularDescontoInss(this.proventosTotais);
+        this.calcularDescontoInss(this.proventosTotais, diasDeFerias);
         this.CalculaGerais();
 
         this.calcularDescontoIr(this.proventosTotais - this.descontoInss);
@@ -94,7 +95,7 @@ class Calcula {
         abonoResult.innerText = abonoCheck ? `R$ ${this.abonoPecuario.toFixed(2)}` : '0.00';
         umTercoAbonoResult.innerText = abonoCheck ? `R$ ${this.tercoAbonoPecuario.toFixed(2)}` : '0.00';
 
-        // colocar para exibir a parcela tambem!! usar o decimoCheck para fazer isso igual o abono
+        parcelaDecimoResult.innerText = decimoCheck ? `R$ ${this.parcelaDecimoTerceiro.toFixed(2)}` : '0.00';
 
         mediasResult.innerText = `R$ ${this.medias.toFixed(2)}`;
 
@@ -106,23 +107,26 @@ class Calcula {
         liquidoResult.innerText = `Liquido: ${this.liquidoTotal.toFixed(2)}`;
     }
 
-    calcularDescontoInss(proventosTotais) {
+    calcularDescontoInss(proventosTotais, diasDeFerias) {
+        let inss = 0;
 
         if (proventosTotais >= 0 && proventosTotais <= 1320) {
-            this.descontoInss = (proventosTotais * 0.075) - 99;
+            inss = (proventosTotais * 0.075) - 99;
             
         } else if (proventosTotais >= 1320.01 && proventosTotais <= 2571.29) {
-            this.descontoInss = (proventosTotais * 0.09) - 112.62;
+            inss = (proventosTotais * 0.09) - 112.62;
 
         } else if (proventosTotais >= 2571.30 && proventosTotais <= 3856.94) {
-            this.descontoInss = (proventosTotais * 0.12) - 154.28;
+            inss = (proventosTotais * 0.12) - 154.28;
 
         } else if (proventosTotais >= 3856.95 && proventosTotais <= 7507.29) {
-            this.descontoInss = (proventosTotais * 0.14) - 511.05;
+            inss = ((proventosTotais * 0.14) - 511.05) ;
             
         } else if (proventosTotais >= 7507.29) {
-            this.descontoInss = 876.94;
+            inss = 876.94;
         } 
+
+        this.descontoInss = (diasDeFerias * inss) / 30;
 
     }
 
