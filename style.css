@@ -1,13 +1,16 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: sans-serif;
   padding: 0;
 }
 
 body {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+  background-image: url(https://th.bing.com/th/id/R.a9991918ebc2dd4633048c6886ae7c39?rik=IYKsuH5rOJpacQ&riu=http%3a%2f%2fboletimjuridico.publicacoesonline.com.br%2fwp-content%2fuploads%2f2018%2f09%2fferias.jpg&ehk=1TjNqd%2fGfKYM8vrYCWbuWTlVQxmyK2nfxENSo0gbewM%3d&risl=&pid=ImgRaw&r=0);
   display: flex;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -19,7 +22,7 @@ body {
 
 .entry,
 .exit {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px;
@@ -31,7 +34,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 350px;
 }
 
 .text {
@@ -42,6 +44,14 @@ body {
 
 .detalhado {
   width: 100%;
+  display: block;
+}
+
+.separa{
+  margin-left: 55px;
+  display: flex;
+  max-width: 350px;
+  justify-content: space-between;
 }
 
 .content-exit {
@@ -135,17 +145,29 @@ body {
   color: rgb(5, 227, 5);
 }
 
-
-
 .inssResult,
 .irResult {
   color: red;
 }
 
 .resultadoCalculoExibir{
+  margin: 10px;
+  padding: 5px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
+.proventosEdescontos{
+  display: flex;
+  gap: 50px;
+}
+
+.liquido{
+  margin: 10px;
+  padding: 5px;
+}
 
 .descricao,
 .numeros {
@@ -153,13 +175,6 @@ body {
   margin: 10px;
   
 }
-
-
-.separa{
-  display: flex;
-  justify-content: space-between;
-}
-
 
 
 @media (max-width: 768px) {
