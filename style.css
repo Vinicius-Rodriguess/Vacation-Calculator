@@ -22,7 +22,7 @@ body {
 
 .entry,
 .exit {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.92);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px;
@@ -77,18 +77,22 @@ body {
 }
 
 #abono {
-  width: 350px;
+  width: 65px;
   margin: 5px;
+  align-items: end;
+  text-align: end;
+  background-color: red;
 }
 
 #decimoTerceiro {
-  width: 25px;
+  width: 65px;
   margin: 5px;
 }
 
 .salario,
 .medias,
-.dias {
+.dias,
+.dependentesIr {
   width: 80px;
   text-align: center;
 }
@@ -167,7 +171,9 @@ body {
 
 .liquido{
   margin: 10px;
-  padding: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }
 
 .descricao,
@@ -177,6 +183,18 @@ body {
   
 }
 
+.liquidoResult{
+  color: rgb(16, 151, 16);
+
+}
+
+.descontosResult{
+  color: red;
+}
+
+.proventosResult{
+  color: rgb(5, 227, 5);
+}
 
 @media (max-width: 768px) {
   .container {

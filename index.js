@@ -12,12 +12,13 @@ const liquidoResult = document.querySelector(".liquidoResult");
 const parcelaDecimoResult = document.querySelector(".parcelaDecimoResult");
 
 class Calcula {
-    constructor(salarioBase, diasDeFerias, medias, abonoCheck, decimoCheck) {
+    constructor(salarioBase, diasDeFerias, medias, abonoCheck, decimoCheck, dependentesIr) {
         this.salarioBase = salarioBase;
         this.diasDeFerias = diasDeFerias;
         this.medias = medias;
         this.abonoCheck = abonoCheck;
         this.decimoCheck = decimoCheck;
+        this.dependentesIr = dependentesIr;
 
         this.salarioProporcional = 0;
         this.tercoSalarioProporcial = 0;
@@ -70,6 +71,8 @@ class Calcula {
         this.CalculaGerais();
 
         this.exibirNaTela(abonoCheck, decimoCheck);
+
+        console.log(this.salarioBase)
 
     }
 
@@ -132,6 +135,9 @@ class Calcula {
 
     calcularDescontoIr(proventosMenosInss) {
 
+        // colocar o numero de dependentes para fazer o calculo
+        // ir simplificado
+
         if (proventosMenosInss >= 1903.99 && proventosMenosInss < 2826.65) {
             this.descontoIr = (proventosMenosInss * 0.075) - 158.40;
 
@@ -159,8 +165,9 @@ buttonSubmit.addEventListener("click", e => {
     const dias = parseInt(document.querySelector(".dias").value);
     const abono = document.querySelector(".abono").checked;
     const decimo = document.querySelector(".decimoTerceiro").checked;
-
-    new Calcula(salario, dias, medias, abono, decimo);
+    const dependentesIr = parseInt(document.querySelector(".dependentesIr").value);
+    
+    new Calcula(salario, dias, medias, abono, decimo, dependentesIr);
 });
 
 
