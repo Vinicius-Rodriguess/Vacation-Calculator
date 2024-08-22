@@ -15,4 +15,4 @@ This tool is designed to simplify the process of calculating vacation pay, ensur
 
 <a href="https://vinicius-rodriguess.github.io/Vacation-Calculator" target="_blank">Click here to test the project!</a>
 <p></p>
-<img src="./src/img/bg-ferias.jpg"/>
+<img src="./src/img/project.png"/>
