@@ -1,0 +1,139 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+.container-gen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: rgb(0, 128, 255);
+  background-image: url("../../img/bg-ferias.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container-gen h1 {
+  color: rgb(22, 117, 250);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.container-gen form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.container-gen form input {
+  width: 100%;
+}
+.container-gen form .form-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.container-gen form .form-group input {
+  width: 100%;
+  border: none;
+  padding: 0.43rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+.container-gen form .form-group label {
+  align-self: flex-start;
+}
+.container-gen form .form-group-check {
+  display: flex;
+}
+@media screen and (width > 768px) {
+  .container-gen {
+    flex-direction: row;
+  }
+}
+
+.container-form,
+.container-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+  min-width: 24rem;
+  max-width: 24rem;
+}
+
+.container-form:hover,
+.container-results:hover {
+  transform: scale(1.01);
+}
+
+.container-results h2 {
+  color: rgb(22, 117, 250);
+  font-size: 1.8rem;
+  text-align: center;
+}
+.container-results .cont-ul-results {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.container-results ul {
+  padding: 1rem;
+}
+.container-results ul li {
+  list-style: none;
+  padding: 0.3rem;
+}
+.container-results .main-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.container-results .main-results .main-results-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.btn {
+  padding: 0.5rem 3rem;
+  border-radius: 1rem;
+  background-color: rgb(22, 117, 250);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,160 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+}
+
+
+@mixin column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+$bgFerias: "../../img/bg-ferias.jpg";
+$colorDefaultBg: rgb(0, 128, 255);
+$colorBtn: rgb(22, 117, 250);
+$colorTitle: rgb(22, 117, 250);
+$earnings: green;
+$discounts: red;
+$whiteRgba: rgb(255, 255, 255, 0.8);
+
+
+.container-gen {
+    @include column();
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+    gap: 2rem;
+    background-color: $colorDefaultBg;
+    background-image: url($bgFerias);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    h1 {
+        color: $colorTitle;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    form {
+        @include column();
+        gap: .5rem;
+
+        input {
+            width: 100%;
+        }
+
+        .form-group {
+            @include column();
+            width: 100%;
+
+            input {
+                width: 100%;
+                border: none;
+                padding: 0.43rem;
+                border-radius: 0.5rem;
+                margin-bottom: 0.5rem;
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+            }
+
+            label {
+                align-self: flex-start;
+            }
+        }
+
+        .form-group-check {
+            display: flex;
+        }
+    }
+
+    @media screen and (width > 768px){
+        & {
+            flex-direction: row;
+        }
+    }
+}
+
+
+.container-form,
+.container-results {
+    @include column();
+    gap: 1rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(4px);
+    background-color: $whiteRgba;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 1rem;
+    transition: transform .2s ease;
+    min-width: 24rem;
+    max-width: 24rem;
+}
+
+.container-form:hover,
+.container-results:hover {
+    transform: scale(1.01);
+}
+
+.container-results {
+
+    h2 {
+        color: $colorTitle;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .cont-ul-results {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    ul {
+        padding: 1rem;
+    }
+
+    ul li {
+        list-style: none;
+        padding: 0.3rem;
+    }
+
+    .main-results {
+        @include column();
+        gap: 1rem;
+        background-color: $whiteRgba;
+        padding: 1rem;
+        border-radius: 1rem;
+
+        .main-results-div {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }   
+    }
+}
+
+
+.btn {
+    padding: .5rem 3rem;
+    border-radius: 1rem;
+    background-color: $colorBtn;
+    color:white;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+
+.text-red {
+    color: $discounts;
+}
+
+
+.text-green {
+    color: $earnings;
+}

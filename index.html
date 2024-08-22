@@ -2,90 +2,105 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Calcular Férias</title>
-  <script src="./src/dist/main.js" defer type="module"></script>
-  <link rel="stylesheet" href="./src/css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calcular Férias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./src/sass/css/style.css">
+    <script src="./src/js/main.js" type="module"></script>
 </head>
 
 <body>
 
-  <!-- Main Container -->
-  <div class="min-h-screen w-full flex flex-col gap-2 justify-center items-center p-2 container-gen bg-cover bg-no-repeat bg-center">
-  
-    <!-- Form Container -->
-    <div class="w-full p-1 flex flex-col gap-1 rounded-1 shadow-2 bg-white-rgba backdrop-blur-1 max-w-def">
-      <div class="w-full flex items-center justify-center">
-        <h1 class="text-blue w-fit px-1 rounded-.5 font-normal text-1.5">Calculo de Férias</h1>
-      </div>
-      <div class="w-full">
-        <form class="flex flex-col" id="form-calc">
-          <label for="wage" class="py-.5">Salário Bruto</label>
-          <input type="text" id="wage" name="wage" class="mb-1 border-none rounded-.5 shadow-1 p-.5 text-center hover-input">
-          
-          <label for="days" class="py-.5">Dias de Férias</label>
-          <input type="text" id="days" name="days" class="mb-1 border-none rounded-.5 shadow-1 p-.5 text-center hover-input">
-          
-          <label for="averages" class="py-.5">Médias</label>
-          <input type="text" id="averages" name="averages" class="mb-1 border-none rounded-.5 shadow-1 p-.5 text-center hover-input">
+    <!-- Main Container -->
+    <div class="container-gen">
+        <!-- Form Container -->
+        <div class="container-form">
+            <div>
+                <h1>Cálculo de Férias</h1>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="salario">Salário Bruto</label>
+                    <input type="text" id="salario" class="salario inputs" required>
+                </div>
+                <div class="form-group">
+                    <label for="dias">Dias de Férias</label>
+                    <input type="text" id="dias" class="dias inputs input-day" required>
+                </div>
+                <div class="form-group">
+                    <label for="medias">Médias</label>
+                    <input type="text" id="medias" class="medias inputs">
+                </div>
+                <div class="form-group">
+                    <label for="dependenteIr">Quantidade de dependentes ( IR )</label>
+                    <input type="text" id="dependentesIr" class="dependentesIr inputs">
+                </div>
+                <div class="form-group-check">
+                    <div>
+                        <label for="abono" class="label-checkbox">Abono Pecuniário</label>
+                        <input type="checkbox" id="abono" class="abono">
+                    </div>
+                    <div>
+                        <label for="decimoTerceiro" class="label-checkbox">1ª Parcela do 13º</label>
+                        <input type="checkbox" id="decimoTerceiro" class="decimoTerceiro">
+                    </div>
 
-          <label for="dependentIR" class="py-.5">Dependentes (IR)</label>
-          <input type="text" id="dependentIR" name="dependentIR" class="mb-1 border-none rounded-.5 shadow-1 p-.5 text-center hover-input">
-          
-          <div class="flex w-full items-center justify-around p-.5">
-            <label for="allowance">Abono Pecuniário</label>
-            <label for="thirteenth">1ª Parcela do 13º</label>
-          </div>
-          <div class="flex w-full items-center justify-around p-.5">
-            <input type="checkbox" id="allowance" name="allowance" class="cursor-pointer" style="height: 1.5rem; width: 1.5rem;">
-            <input type="checkbox" id="thirteenth" name="thirteenth" class="cursor-pointer" style="height: 1.5rem; width: 1.5rem;">
-          </div>          
-        </form>
-        <div class="w-full flex items-center justify-center pt-1">
-        <button type="button" id="btn-calculate"
-          class="bg-blue text-white rounded-.5 shadow-1 py-.5 px-1 border-none text-1 cursor-pointer hover-btn">Calcular</button>
-        </div>
-      </div>
-    </div>
+                </div>
 
-    <!-- Results Container -->
-    <div class="w-full p-1 flex flex-col gap-1 rounded-1 shadow-2 bg-white-rgba backdrop-blur-1 max-w-def">
-      <div class="w-full flex items-center justify-center">
-        <h2 class="text-blue w-fit px-1 rounded-.5 font-normal text-1.5">Remuneração</h2>
-      </div>
-      <div class="w-full grid grid-cols-2 p-2 gap-1 container-results">
-        <p>Ferias:</p>
-        <span class="text-end" id="result-wage">R$ 0,00</span>
-        <p>Abono de Férias:</p>
-        <span class="text-end" id="result-days">R$ 0,00</span>
-        <p>1/3 de Férias:</p>
-        <span class="text-end" id="result-averages">R$ 0,00</span>
-        <p>1/3 de Abono:</p>
-        <span class="text-end" id="result-dependentIR">R$ 0,00</span>
-        <p>Médias:</p>
-        <span class="text-end" id="result-allowance">R$ 0,00</span>
-        <p>Parcela Decimo:</p>
-        <span class="text-end" id="result-thirteenth">R$ 0,00</span>
-        <p>INSS:</p>
-        <span class="text-end" id="result-INSS">R$ 0,00</span>
-        <p>IRRF:</p>
-        <span class="text-end" id="result-IRRF">R$ 0,00</span>
-      </div>
-      <div class="flex flex-col gap-1 p-1 w-full bg-white-rgba rounded-.5 shadow-0">
-        <div class="flex gap-3 items-center justify-center w-full">
-          <p class="text-green" id="result-earnings">Proventos: <span>R$ 0,00</span></p>
-          <p class="text-red" id="result-discounts">Descontos: <span>R$ 0,00</span></p>
+                <button type="submit" class="btnSubmit btn">Calcular</button>
+            </form>
         </div>
-        <div class="flex items-center justify-center w-full p-.5 bg-white rounded-.5 shadow-0">
-          <p class="text-green" id="result-liquid">Liquido: <span>R$ 0,00</span></p>
+
+        <!-- Results Container -->
+        <div class="container-results">
+            <div>
+                <h2>Cálculo de Remuneração</h2>
+            </div>
+            <div class="cont-ul-results">
+                <div>
+                    <ul>
+                        <li class="text-green">Férias:</li>
+                        <li class="text-green">Abono de Férias:</li>
+                        <li class="text-green">1/3 de Férias:</li>
+                        <li class="text-green">1/3 de Abono:</span></li>
+                        <li class="text-green">Médias:</li>
+                        <li class="text-green">Parcela Decimo:</li>
+                        <li class="text-red">INSS:</li>
+                        <li class="text-red">IRRF:</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="salarioResult text-green">R$ 0,00</li>
+                        <li class="abonoResult text-green">R$ 0,00</li>
+                        <li class="umtercoResult text-green">R$ 0,00</li>
+                        <li class="umTercoAbonoResult text-green">R$ 0,00</li>
+                        <li class="mediasResult text-green">R$ 0,00</li>
+                        <li class="parcelaDecimoResult text-green">R$ 0,00</li>
+                        <li class="inssResult text-red">R$ 0,00</li>
+                        <li class="irResult text-red">R$ 0,00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-results">
+                <div class="main-results-div">
+                    <p class="text-green">Proventos: <span class="proventosResult">R$ 0,00</span></p>
+                    <p class="text-red">Descontos: <span class="descontosResult">R$ 0,00</span></p>
+                </div>
+                <div>
+                    <p class="text-green">Liquido: <span class="liquidoResult">R$ 0,00</span></p>
+                </div>
+            </div>
         </div>
-      </div>
+
     </div>
- 
- 
-  </div>
 
 </body>
+
 </html>
