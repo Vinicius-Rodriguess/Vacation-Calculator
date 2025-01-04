@@ -20,7 +20,7 @@ O código foi desenvolvido utilizando **JavaScript**, com uma abordagem modular 
 
 - **JavaScript**: Para toda a lógica de cálculo e manipulação do DOM.
 - **HTML5**: Estruturação da página.
-- **CSS3**: Estilização básica da interface.
+- **SCSS**: Estilização básica da interface.
 
 ---
 
