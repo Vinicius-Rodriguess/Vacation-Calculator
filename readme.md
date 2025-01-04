@@ -1,39 +1,68 @@
-# Calculadora de Férias
+# 🔑 **Vacation Calculator**
 
-**Visão Geral**  
-O projeto *Calculadora de Férias* oferece uma solução abrangente para calcular a remuneração de férias dos funcionários. Ao inserir o salário e os dias de férias, os usuários podem rapidamente determinar seus ganhos brutos e líquidos, além de quaisquer benefícios ou deduções adicionais.
+Este projeto é uma ferramenta abrangente para o cálculo de férias, permitindo que os usuários obtenham uma visão detalhada dos ganhos e descontos relacionados às férias. O cálculo considera uma ampla gama de fatores, como salário base, dias de férias, médias salariais e deduções fiscais.
 
-**Funcionalidades**
+O código foi desenvolvido utilizando **JavaScript**, com uma abordagem modular que facilita a manutenção e extensão das funcionalidades.
 
-- **Entrada de Salário:** Insira seu salário para calcular a remuneração de férias com base nos seus ganhos.
-- **Entrada de Dias de Férias:** Especifique o número de dias de férias para calcular a compensação correspondente.
-- **Cálculos Detalhados:** Fornece uma análise detalhada dos ganhos brutos e líquidos, incluindo quaisquer benefícios e deduções aplicáveis.
-- **Interface Amigável:** Uma interface intuitiva para cálculos fáceis e precisos.
-- **Resultados em Tempo Real:** Exibe resultados detalhados imediatamente após a inserção.
+---
 
-Esta ferramenta é projetada para simplificar o processo de cálculo do pagamento de férias, garantindo que você tenha todas as informações necessárias para um planejamento financeiro preciso.
+## 🚀 **Funcionalidades**
+
+- **Cálculo de Proventos de Férias**: Calcula o valor proporcional do salário de férias, incluindo um terço adicional obrigatório.
+- **Cálculo de Abono Pecuniário**: Adiciona a opção de incluir um abono pecuniário com um terço proporcional.
+- **Cálculo da Primeira Parcela do 13º Salário**: Permite o cálculo opcional da parcela do 13º salário.
+- **Cálculo de Deduções**: Considera as deduções de INSS e IR com base no total de proventos.
+- **Resultados Detalhados**: Exibe os valores calculados de proventos, deduções e total líquido de forma clara e organizada.
+
+---
+
+## 🛠️ **Tecnologias Utilizadas**
+
+- **JavaScript**: Para toda a lógica de cálculo e manipulação do DOM.
+- **HTML5**: Estruturação da página.
+- **CSS3**: Estilização básica da interface.
+
+---
+
+## 🔧 **Como Executar o Projeto**
 
 <a href="https://vinicius-rodriguess.github.io/Vacation-Calculator" target="_blank">Clique aqui para testar o projeto!</a>
-<p></p>
-
 
 <img src="./src/img/project.png"/>
 
+Ou então:
 
-# Vacation Calculator
+1. **Clone este Repositório**:
 
-**Overview**  
-The *Vacation Calculator* project offers a comprehensive solution for calculating vacation remuneration for employees. By inputting their salary and vacation days, users can quickly determine their gross and net earnings, along with any additional benefits or deductions.
+   ```bash
+   git clone https://github.com/Vinicius-Rodriguess/Vacation-Calculator.git
+   cd vacation-calculator
+   ```
 
-**Features**
+2. **Abra o arquivo** index.html **em seu navegador** para utilizar a calculadora de férias.
 
-- **Salary Input:** Enter your salary to calculate vacation remuneration based on your earnings.
-- **Vacation Days Input:** Specify the number of vacation days to calculate the corresponding compensation.
-- **Detailed Calculations:** Provides a breakdown of gross and net earnings, including any applicable benefits and deductions.
-- **User-Friendly Interface:** An intuitive interface for easy and accurate calculations.
-- **Real-Time Results:** Displays detailed results immediately upon input.
+---
 
-This tool is designed to simplify the process of calculating vacation pay, ensuring you have all the necessary information for accurate financial planning.
+## 🖥️ **Exemplo de Uso**
 
-<a href="https://vinicius-rodriguess.github.io/Vacation-Calculator" target="_blank">Click here to test the project!</a>
-<p></p>
+1. **Insira os dados necessários**: Informe o salário base, número de dias de férias, médias salariais e escolha as opções desejadas (abono pecuniário, 13º salário, etc.).
+2. **Clique em "Calcular"**: O sistema realizará todos os cálculos automaticamente.
+3. **Visualize os resultados**: Confira os valores detalhados de proventos, deduções e o total líquido.
+
+---
+
+## ✅ **Melhorias Futuras**
+
+- Adicionar uma interface gráfica mais intuitiva e moderna.
+- Implementar suporte para diferentes moedas e idiomas.
+- Incluir a funcionalidade de exportação de resultados para PDF ou planilhas.
+- Melhorar a precisão dos cálculos com atualizações constantes das tabelas de INSS e IR.
+
+---
+
+## 👨‍💻 **Autor**
+
+**Vinicius Rodrigues**
+
+- GitHub: [Vinicius-Rodriguess](https://github.com/Vinicius-Rodriguess)
+- Email: rodrigues.vini.2004@gmail.com
